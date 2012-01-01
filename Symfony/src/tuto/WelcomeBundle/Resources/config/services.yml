@@ -1,0 +1,7 @@
+parameters:
+#    tuto_welcome.example.class: tuto\WelcomeBundle\Example
+
+services:
+#    tuto_welcome.example:
+#        class: %tuto_welcome.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
