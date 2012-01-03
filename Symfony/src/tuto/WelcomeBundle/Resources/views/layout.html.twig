@@ -11,7 +11,13 @@
         <div id="container">
             <header>
                 <a href="{{ path('tutoWelcomeBundle_homepage') }}" title="Retour à l'accueil">Tutoriel Symfony2</a>
-                <p>Bonjour et bienvenue dans ce tutoriel pour Symfony2</p>
+                <p>
+                  {% for key, flash in app.session.getFlashes() %}
+                    {% if flash %}
+                        {{ flash }}
+                    {% endif %}
+                  {% endfor %}
+                </p>
             </header>
 
             <div id="content">
