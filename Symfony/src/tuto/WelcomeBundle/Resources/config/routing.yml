@@ -7,3 +7,7 @@ tutoWelcomeBundle_whoami:
     defaults: { _controller: tutoWelcomeBundle:Homepage:whoAmI }
     requirements:
       name: \w+
+
+tutoWelcomeBundle_contact:
+    pattern:  /contact
+    defaults: { _controller: tutoWelcomeBundle:Contact:index }

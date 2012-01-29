@@ -1,0 +1,12 @@
+tuto\WelcomeBundle\Entity\Contact:
+    properties:
+        email:
+            - Email: { message: "Email invalide" }
+        subject:
+            - MinLength:  { limit: 5, message: "Le sujet est trop court, il doit faire au moins {{ limit }} caractères." }
+            - MaxLength:  { limit: 140, message: "Le sujet est trop long, il doit faire au maximum {{ limit }} caractères." }
+        content:
+            - MinLength:  { limit: 40, message: "Le contenu est trop court, il doit faire au moins {{ limit }} caractères."  }
+    constraints:
+        - Callback:
+            methods:   [isEmailValid]

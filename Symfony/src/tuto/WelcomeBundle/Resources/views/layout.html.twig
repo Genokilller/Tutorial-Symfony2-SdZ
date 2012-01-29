@@ -11,17 +11,24 @@
         <div id="container">
             <header>
                 <a href="{{ path('tutoWelcomeBundle_homepage') }}" title="Retour à l'accueil">Tutoriel Symfony2</a>
-                <p>
-                  {% for key, flash in app.session.getFlashes() %}
-                    {% if flash %}
+                {% for key, flash in app.session.getFlashes() %}
+                  {% if flash %}
+                      <p>
                         {{ flash }}
-                    {% endif %}
-                  {% endfor %}
-                </p>
+                      </p>
+                  {% endif %}
+                {% endfor %}
             </header>
-
             <div id="content">
-                {% block content %}{% endblock %}
+                <article>{% block content %}{% endblock %}</article>
+                <aside>
+                    <nav>
+                      <h4>Navigation</h4>
+                        <ul>
+                          <li><a href="{{ path('tutoWelcomeBundle_contact') }}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </aside>
             </div>
             <footer>
             </footer>
