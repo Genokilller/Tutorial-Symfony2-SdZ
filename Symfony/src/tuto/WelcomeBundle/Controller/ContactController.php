@@ -3,7 +3,7 @@
 namespace tuto\WelcomeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use tuto\WelcomeBundle\Form\ContactType;
+use tuto\WelcomeBundle\Form\Type\ContactType;
 
 class ContactController extends Controller
 {
@@ -26,17 +26,17 @@ class ContactController extends Controller
             // Bind value with form
             $form->bindRequest($request);
 
-            $data = $form->getData();
+            $contact = $form->getData();
 
             // Valid form
             if ($form->isValid())
             {
                 $message = \Swift_Message::newInstance()
                     ->setContentType('text/html')
-                    ->setSubject($data['subject'])
-                    ->setFrom($data['email'])
+                    ->setSubject($contact->getSubject())
+                    ->setFrom($contact->getEmail())
                     ->setTo('xxxxx@gmail.com')
-                    ->setBody($data['content']);
+                    ->setBody($contact->getContent());
 
                 $this->get('mailer')->send($message);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace tuto\WelcomeBundle\Form;
+namespace tuto\WelcomeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
@@ -21,7 +21,7 @@ class ContactType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'tuto\WelcomeBundle\Entity\Contact',
+            'data_class' => 'tuto\WelcomeBundle\Form\Model\Contact',
         );
     }
 

@@ -1,4 +1,4 @@
-tuto\WelcomeBundle\Entity\Contact:
+tuto\WelcomeBundle\Form\Model\Contact:
     properties:
         email:
             - Email: { message: "Email invalide" }
@@ -9,4 +9,5 @@ tuto\WelcomeBundle\Entity\Contact:
             - MinLength:  { limit: 40, message: "Le contenu est trop court, il doit faire au moins {{ limit }} caractères."  }
     constraints:
         - Callback:
-            methods:   [isEmailValid]
+            methods:
+                - [tuto\WelcomeBundle\Form\Callbacks\ContactValidator, isEmailValid]

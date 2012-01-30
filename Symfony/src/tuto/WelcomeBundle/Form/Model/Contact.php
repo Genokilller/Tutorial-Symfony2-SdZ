@@ -1,6 +1,6 @@
 <?php
 
-namespace tuto\WelcomeBundle\Entity;
+namespace tuto\WelcomeBundle\Form\Model;
 use Symfony\Component\Validator\ExecutionContext;
 
 class Contact
