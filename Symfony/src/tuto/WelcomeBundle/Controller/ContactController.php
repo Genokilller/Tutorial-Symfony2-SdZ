@@ -3,8 +3,6 @@
 namespace tuto\WelcomeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use tuto\WelcomeBundle\Form\Type\ContactType;
-use tuto\WelcomeBundle\Form\Handler\ContactHandler;
 
 class ContactController extends Controller
 {
@@ -16,13 +14,13 @@ class ContactController extends Controller
     */
     public function indexAction()
     {
-        $form = $this->get('form.factory')->create(new ContactType());
+        $form = $this->get('tuto_welcome.contact.form');
 
          // Get the request
         $request = $this->get('request');
 
         // Get the handler
-        $formHandler = new ContactHandler($form, $request, $this->get('mailer'));
+        $formHandler = $this->get('tuto_welcome.contact.form.handler');
 
         $process = $formHandler->process();
 

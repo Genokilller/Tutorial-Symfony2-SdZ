@@ -4,13 +4,16 @@ namespace tuto\WelcomeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\Constraints\MinLength;
-use Symfony\Component\Validator\Constraints\MaxLength;
-use Symfony\Component\Validator\Constraints\Collection;
 
 class ContactType extends AbstractType
 {
+    private $class;
+    
+    public function __construct($class)
+    {
+        $this->class = $class;
+    }
+    
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('email', 'email')
@@ -21,7 +24,7 @@ class ContactType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'tuto\WelcomeBundle\Form\Model\Contact',
+            'data_class' => $this->class,
         );
     }
 
@@ -30,4 +33,3 @@ class ContactType extends AbstractType
         return 'Contact';
     }
 }
-?>
