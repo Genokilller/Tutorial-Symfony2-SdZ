@@ -1,0 +1,22 @@
+parameters:
+    tuto_welcome.contact.type.class: tuto\WelcomeBundle\Form\Type\ContactType
+    tuto_welcome.contact.handler.class: tuto\WelcomeBundle\Form\Handler\ContactHandler
+    tuto_welcome.contact.model.class: tuto\WelcomeBundle\Form\Model\Contact
+
+services:
+    tuto_welcome.contact.form:
+        class: Symfony\Component\Form\Form
+        arguments: ["@tuto_welcome.contact.form.type"]
+        factory_method: create
+        factory_service: form.factory
+
+    tuto_welcome.contact.form.type:
+        class: %tuto_welcome.contact.type.class%
+        arguments: [%tuto_welcome.contact.model.class%]
+        tags:
+            - { name: form.type , alias: tuto_welcome_contact }
+
+    tuto_welcome.contact.form.handler:
+        class: %tuto_welcome.contact.handler.class%
+        scope: request
+        arguments: ["@tuto_welcome.contact.form", "@request", "@mailer"]
